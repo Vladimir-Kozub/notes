@@ -1,5 +1,5 @@
 # notes
-docker container with django app for markdown notes
+docker container with django app for markdown notes  
 to start using write these commands in your terminal:
 
 docker build -t notes .
