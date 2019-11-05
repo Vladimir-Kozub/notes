@@ -1,0 +1,30 @@
+# Установка базы данных 
+sudo apt-get update
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+
+#добавление новой базы и пользователей
+sudo su - postgres
+psql
+CREATE DATABASE notes;
+
+CREATE USER notes_user WITH PASSWORD 'notes_pass';
+
+ALTER ROLE notes_user SET client_encoding TO 'utf8';
+ALTER ROLE notes_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE notes_user SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE notes TO notes_user;
+
+\q
+
+exit
+
+
+#установка пакетов в виртуальную среду:
+conda install -c anaconda psycopg2
+pip install django-markdownx
+
+
+#Параметры суперюзера: suser, qwerty
+
+

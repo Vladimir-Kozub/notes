@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>New Note:</h1>
+
+    <form action="" method="post">
+        <ul>
+        <div style="background-color:rosybrown;color:black;padding:15px;border:3px solid;border-color:cadetblue">
+        {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Save" />
+        </div>
+        </ul>
+    </form>
+
+<h1>Notes list:</h1>
+
+    {% if entry_list %}
+    <ul>
+      {% for entry in entry_list %}
+          <div style="background-color:cyan;color:black;padding:15px;border:3px solid;border-color:cadetblue">
+              <strong> posted: </strong>{{entry.timestamp}}<br>
+              <strong> tags: </strong>{{entry.tags}} <br>
+              {{entry.formatted_markdown | safe}}
+
+               <form action="/entries/del/{{ entry.id }}" method="">
+                        <input type="submit" value="delete" />
+               </form>
+          </div>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no entry in the notes.</p>
+    {% endif %}
+
+{% endblock %}

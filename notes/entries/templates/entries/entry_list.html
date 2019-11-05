@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Entry List</h1>
+
+    {% if entry_list %}
+    <ul>
+
+      {% for entry in entry_list %}
+      <li>
+        ({{entry.timestamp}})
+        ({{entry.tags}})
+        ({{entry.note}})
+
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no entry in the notes.</p>
+    {% endif %}       
+{% endblock %}
