@@ -118,13 +118,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-settings_file = 'settings.txt'
-from os.path import exists
-if exists(settings_file):
-    with open(settings_file) as f:
-        for line in f.readlines():
-            ss = line.split()
-            print(ss)
-            if ss[0] == 'ALLOWED_HOSTS':
-                ALLOWED_HOSTS += ss[1:]
