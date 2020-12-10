@@ -25,8 +25,7 @@ SECRET_KEY = '&)^ebk#%n6+iroag_5u35x$us(0xvl@ecg56^^pr27$8oyb0&6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost',]
 
 # Application definition
 
@@ -119,3 +118,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+settings_file = 'settings.txt'
+from os.path import exists
+if exists(settings_file):
+    with open(settings_file) as f:
+        for line in f.readlines():
+            ss = line.split()
+            print(ss)
+            if ss[0] == 'ALLOWED_HOSTS':
+                ALLOWED_HOSTS += ss[1:]
